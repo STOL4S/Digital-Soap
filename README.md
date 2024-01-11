@@ -11,6 +11,7 @@
 <img src="https://img.shields.io/github/downloads/STOL4S/Digital-Soap/total?label=Downloads"/>
 <img src="https://img.shields.io/github/commit-activity/m/STOL4S/Digital-Soap?label=Commits"/>
 <img src="https://img.shields.io/github/issues-raw/STOL4S/Digital-Soap?label=Open%20Issues"/>
+<img src="https://img.shields.io/github/languages/code-size/STOL4S/Digital-Soap?label=Project%20Size"/>
 <img src="https://img.shields.io/badge/GitHub-STOLAS-8A2BE2?logo=github"/>
 </div>  
 
