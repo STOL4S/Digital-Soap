@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/Visual%20Studio-2022-8A2BE2?logo=visualstudio)
 ![](https://img.shields.io/badge/.NET%208.0-C%23-239120)
 ![](https://img.shields.io/badge/License-GPLv3-blue.svg)
-![](https://img.shields.io/badge/Release-v0.1.1a-4DC81F)
+![](https://img.shields.io/github/v/tag/STOL4S/Digital-Soap?label=Release&color=4DC81F)
 ![](https://img.shields.io/github/downloads/STOL4S/Digital-Soap/total?label=Downloads)
 ![](https://img.shields.io/badge/GitHub-STOLAS-8A2BE2?logo=github)
 
