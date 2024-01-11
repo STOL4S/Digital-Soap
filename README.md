@@ -9,6 +9,7 @@
 <img src="https://img.shields.io/badge/License-GPLv3-blue.svg"/>
 <img src="https://img.shields.io/github/v/tag/STOL4S/Digital-Soap?label=Release&color=4DC81F"/>
 <img src="https://img.shields.io/github/downloads/STOL4S/Digital-Soap/total?label=Downloads"/>
+<img src="https://img.shields.io/github/commit-activity/m/STOL4S/Digital-Soap?label=Commit%20Activity"/>
 <img src="https://img.shields.io/badge/GitHub-STOLAS-8A2BE2?logo=github"/>
 </div>
 Digital Soap is a .NET C# open-source tool designed for Windows systems. The goal of this program is to provide a free tool that can be used to easily free up space, manage programs and services, and benchmark or view system details.  
