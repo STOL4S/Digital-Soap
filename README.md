@@ -1,4 +1,4 @@
-![LogoLarge](https://github.com/STOL4S/Digital-Soap/assets/138336394/85d94c69-3750-4b51-bb3c-2fe954e9a781)
+![LogoLarge](https://github.com/STOL4S/Digital-Soap/assets/138336394/3f48d5e1-4836-4264-80a7-c07389cc417a)
 <h2 align="center">
   Lightweight .NET C# Open-Source Drive Cleaner and General Maintenance Tool for Windows
 </h2>
