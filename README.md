@@ -1,5 +1,5 @@
 # Digital Soap
-.NET C# open-source cache cleaner and general maintenence tool for Windows operating systems.  
+.NET C# open-source cache cleaner and general maintenance tool for Windows operating systems.  
 
 ![](https://img.shields.io/badge/Visual%20Studio-2022-8A2BE2?logo=visualstudio)
 ![](https://img.shields.io/badge/.NET%208.0-C%23-239120)
