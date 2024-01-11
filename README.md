@@ -25,7 +25,8 @@ The program cleans the hard drive by wiping out old cache and temporary files an
 First, download the latest [release](https://github.com/STOL4S/Digital-Soap/releases) of Digital Soap. Currently the program is only available in portable mode. Extract "DigitalSoap.exe" to the Desktop. All filesystem funcationality is handled through the AppData folder and will not create any files in the directory it is placed in. Run the application, there will be a prompt administrator privileges. The program then starts on the "Clean" tab, which will be discussed next.
 
 ## Digital Clean
-Digital Clean is a library in the Digital Soap application that handles scanning the filesystem for cached, duplicated, temporary, and unused files. It handles the recognition of installed applications and storing custom folders to clean out when running the tool.
+Digital Clean is a library in the Digital Soap application that handles scanning the filesystem for cached, duplicated, temporary, and unused files. It handles the recognition of installed applications and storing custom folders to clean out when running the tool. This is the first tab when loading the application. In the left panel, there is a tree view that has options for which folders to clean. The right panel will display results for both scan and clean. Clicking scan checks how many and how large the files are in the selected folders and then present that information in the right panel. Clicking clean will delete all the files in the selected folders and then present that information in the right panel.<br/><br/>
+*Note: Files can be cleaned without doing a scan first.*
 
 ## Functionality
 By release version 1.0.0 this program should:
