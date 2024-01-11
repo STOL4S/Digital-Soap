@@ -32,6 +32,13 @@ After running the cleaner, it is recommended to run the scan again to ensure fil
 ## Digital Storage
 Digital Storage is a library written for the Digital Soap application that handles scanning the filesystem for duplicate or unused files. It scans an entire drive or selected directory for any files that are duplicate or considered old. On the left panel, there are settings that control where to scan, what files are considered old, and parameters that define "duplicate" files. By default, the scanner considers any file that has not been touched for six months as old and any file with the same exact name and data as duplicates. Information for the found files and directories will be displayed on the right side panel. The user can then manually choose which files and folders to delete or keep.  
 
+## Digital Programs
+Digital Programs is the third library in this program and is responsible for handling modifying and removing programs from the system and which programs and services run on startup. The library scans the system for all installed programs and their uninstaller files in a similar way that Windows "Add/Remove Programs" tool would work. Digital Programs has a chance of finding other programs Windows may not recognize by automatically searching the entire filesystem for uninstallers. All recognized programs and services can be modified, removed, or stopped. Programs and services that can be disabled during startup will be listed and can significantly improve startup time by disabling unnecessary ones.  
+
+## Digital Performance
+
+## Digital System
+
 ## Functionality
 By release version 1.0.0 this program should:
 - Remove cache and temporary files from system.
