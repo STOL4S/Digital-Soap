@@ -33,5 +33,6 @@ By release version 1.0.0 this program should:
 - Find old, unused, or duplicate files taking up space.
 - Modify/remove programs from the system.
 - Modify which services are loaded on startup.
+- Display for system disk defragmentation
 - Retrieve detailed system specifications and have built-in benchmarks.
 - Detect and troubleshoot possible hardware issues.
