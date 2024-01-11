@@ -21,8 +21,11 @@ Digital Soap is a .NET C# open-source tool designed for Windows systems. The goa
 The program cleans the hard drive by wiping out old cache and temporary files and searching for unused or duplicate files found on the system and removing them to free up space. Installed applications on the computer may be recognized by Digital Soap and the cache for the program can be wiped, if chosen by the user. Custom folders can also be set to save locations on the computer that can be selected to wipe when the cleaner runs. The user has the option to select which system locations and programs are cleaned and can view scan information prior to deleting the data from the computer.
 
 ## Getting Started
-*Prerequesite: .NET 8.0 Desktop Runtime is required to run this program. Having the SDK version of .NET 8.0 with Visual Studio should work as well.*
-First, download the latest [release](https://github.com/STOL4S/Digital-Soap/releases) of Digital Soap. Currently the program is only available in portable mode. Extract "DigitalSoap.exe" to the Desktop.
+*Prerequesite: .NET 8.0 Desktop Runtime is required to run this program.*<br/><br/>
+First, download the latest [release](https://github.com/STOL4S/Digital-Soap/releases) of Digital Soap. Currently the program is only available in portable mode. Extract "DigitalSoap.exe" to the Desktop. All filesystem funcationality is handled through the AppData folder and will not create any files in the directory it is placed in. Run the application, there will be a prompt administrator privileges. The program then starts on the "Clean" tab, which will be discussed next.
+
+## Digital Clean
+Digital Clean is a library in the Digital Soap application that handles scanning the filesystem for cached, duplicated, temporary, and unused files. It handles the recognition of installed applications and storing custom folders to clean out when running the tool.
 
 ## Functionality
 By release version 1.0.0 this program should:
