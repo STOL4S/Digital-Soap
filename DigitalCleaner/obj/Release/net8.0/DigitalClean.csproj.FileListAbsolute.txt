@@ -1,0 +1,11 @@
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\bin\Release\net8.0\DigitalClean.deps.json
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\bin\Release\net8.0\DigitalClean.dll
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\bin\Release\net8.0\DigitalClean.pdb
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\DigitalClean.GeneratedMSBuildEditorConfig.editorconfig
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\DigitalClean.AssemblyInfoInputs.cache
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\DigitalClean.AssemblyInfo.cs
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\DigitalClean.csproj.CoreCompileInputs.cache
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\DigitalClean.dll
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\refint\DigitalClean.dll
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\DigitalClean.pdb
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Release\net8.0\ref\DigitalClean.dll

@@ -1,0 +1,11 @@
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\bin\Debug\net8.0\SwiftClean.deps.json
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\bin\Debug\net8.0\SwiftClean.dll
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\bin\Debug\net8.0\SwiftClean.pdb
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\SwiftClean.GeneratedMSBuildEditorConfig.editorconfig
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\SwiftClean.AssemblyInfoInputs.cache
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\SwiftClean.AssemblyInfo.cs
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\SwiftClean.csproj.CoreCompileInputs.cache
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\SwiftClean.dll
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\refint\SwiftClean.dll
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\SwiftClean.pdb
+V:\C# Projects\SwiftClean Toolkit\SwiftClean\obj\Debug\net8.0\ref\SwiftClean.dll
