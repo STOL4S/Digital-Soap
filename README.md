@@ -5,7 +5,6 @@
 ![](https://img.shields.io/badge/.NET%208.0-C%23-239120)
 ![](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![](https://img.shields.io/badge/Release-v0.1.1a-4DC81F)
-![](https://img.shields.io/github/last-commit/STOL4S/Digital-Soap/main?label=Last%20Commit)
 ![](https://img.shields.io/github/downloads/STOL4S/Digital-Soap/total?label=Downloads)
 ![](https://img.shields.io/badge/GitHub-STOLAS-8A2BE2?logo=github)
 - Removes cache and temporary files from system.
