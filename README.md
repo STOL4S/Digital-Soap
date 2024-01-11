@@ -1,5 +1,6 @@
 # Digital Soap
 .NET C# open-source cache cleaner and general maintenence tool for Windows operating systems.
+!(https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 - Removes cache and temporary files from system.
 - Find old, unused, or duplicate files taking up space.
 - Modify/remove programs from the system.
