@@ -1,0 +1,8 @@
+A generic error has occurred during the initialization of the program.
+The specific details are as follow:
+
+Message: GPU not present on computer.
+Inner Exception: System.Exception: Driver may be missing from computer or GPU may not be recognized by the WPF Framework.
+Data
+{
+}

@@ -1,0 +1,8 @@
+A generic error has occurred during the initialization of the program.
+The specific details are as follow:
+
+Message: Could not find a part of the path 'C:\Users\Larry\AppData\Local\DigitalSoap\Config\CustomFolders.ini'.
+Inner Exception: 
+Data
+{
+}
