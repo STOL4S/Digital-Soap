@@ -1,0 +1,1131 @@
+﻿<Window x:Name="Main" x:Class="DigitalSoap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:da="clr-namespace:DigitalSoap"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DigitalSoap"
+        mc:Ignorable="d"
+        Title="Digital Soap" Height="622" Width="840" MinWidth="840" MinHeight="632" SizeChanged="Main_SizeChanged"
+        Background="{StaticResource Dark_BorderBrush}"
+        WindowStyle="None" Closing="Main_Closing">
+    <Window.DataContext>
+        <da:ContextTitle/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard" BeginTime="00:00:00.000" Duration="00:00:05.000" RepeatBehavior="Forever">
+            <DoubleAnimation Storyboard.TargetName="CleanSpinnerImg"
+                             Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                             From="0" To="360" BeginTime="00:00:00.00" Duration="00:00:05.000"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="1" CornerRadius="1" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+    <Grid MinHeight="560">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36" MinHeight="36" MaxHeight="36"/>
+            <RowDefinition Height="84" MinHeight="84" MaxHeight="84"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="TitleGrid" Height="36" Background="{DynamicResource WindowGradientFill}" Grid.Row="0" MouseLeftButtonDown="TitleGrid_MouseLeftButtonDown">
+            <Image Source="/Resources/Images/Logo_Square.png" Width="28" Height="28" HorizontalAlignment="Left"
+                   Margin="12,2,0,0"/>
+            <Label Foreground="{DynamicResource Dark_SecondaryBrush}" FontWeight="Bold" FontSize="16.0" 
+                           Margin="40,4,0,0">Digital Soap</Label>
+            <Button x:Name="WinExitButton" HorizontalAlignment="Right" Width="24" Height="24" Content="X" Margin="0,-2,6,0"
+                    OverridesDefaultStyle="True" Click="WinExitButton_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="{DynamicResource Dark_TextLightBrush}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Canvas Margin="0,0,0,0" Name="Border">
+                                        <ContentPresenter x:Name="ContentSite"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center"
+                                          Content="{TemplateBinding Content}"
+                                          Margin="8,4,4,4"/>
+                                   </Canvas>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource Dark_SecondaryLightBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource Dark_SecondaryBrush}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="WinMaxButton" HorizontalAlignment="Right" Width="24" Height="24" Content="[  ]" 
+                    VerticalContentAlignment="Top" Margin="0,-2,30,0"
+                    OverridesDefaultStyle="True" Click="WinMaxButton_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="{DynamicResource Dark_TextLightBrush}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Canvas Margin="0,0,0,0" Name="Border">
+                                        <ContentPresenter x:Name="ContentSite"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              Margin="8,3,4,4"/>
+                                    </Canvas>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource Dark_SecondaryLightBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource Dark_SecondaryBrush}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="WinMinButton" HorizontalAlignment="Right" Width="24" Height="24" Content="__" 
+                    VerticalContentAlignment="Top" Margin="0,-2,50,0"
+                    OverridesDefaultStyle="True" Click="WinMinButton_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="{DynamicResource Dark_TextLightBrush}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Canvas Margin="0,0,0,0" Name="Border">
+                                        <ContentPresenter x:Name="ContentSite"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              Margin="8,3,4,4"/>
+                                    </Canvas>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource Dark_SecondaryLightBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Foreground" Value="{DynamicResource Dark_SecondaryBrush}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+        <Grid x:Name="grid" Height="84" Background="{DynamicResource Dark_BorderBrush}" Grid.Row="1">
+            <StackPanel Name="TitlePanel" Orientation="Vertical" VerticalAlignment="Bottom">
+                <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                    <Label x:Name="GitHubLabel" FontSize="12.0" 
+                           Margin="12,-0,0,0" Cursor="Hand" PreviewMouseLeftButtonDown="GitHubLabel_PreviewMouseLeftButtonDown">
+                        <Label.Foreground>
+                            <LinearGradientBrush x:Name="GithubForegroundBrush" StartPoint="0,0"
+                                    EndPoint="0,1">
+                                <LinearGradientBrush.GradientStops>
+                                    <GradientStopCollection>
+                                        <GradientStop Color="{DynamicResource Dark_TextLight}" Offset="0.0"/>
+                                        <GradientStop Color="{DynamicResource Dark_SecondaryLight}" Offset="0.5"/>
+                                        <GradientStop Color="{DynamicResource Dark_SecondaryDark}" Offset="0.9" />
+                                    </GradientStopCollection>
+                                </LinearGradientBrush.GradientStops>
+                            </LinearGradientBrush>
+                        </Label.Foreground>
+                        <Label.Triggers>
+                            <EventTrigger RoutedEvent="Window.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            From="{DynamicResource Dark_TextLight}"
+                                            To="{DynamicResource Dark_SecondaryDark}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            BeginTime="00:00:01.00"
+                                            From="{DynamicResource Dark_SecondaryDark}"
+                                            To="{DynamicResource Dark_SecondaryLight}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[0].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            BeginTime="00:00:02.00"
+                                            From="{DynamicResource Dark_SecondaryLight}"
+                                            To="{DynamicResource Dark_TextLight}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            From="{DynamicResource Dark_SecondaryLight}"
+                                            To="{DynamicResource Dark_TextLight}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            BeginTime="00:00:01.00"
+                                            From="{DynamicResource Dark_TextLight}"
+                                            To="{DynamicResource Dark_SecondaryDark}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[1].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            BeginTime="00:00:02.00"
+                                            From="{DynamicResource Dark_SecondaryDark}"
+                                            To="{DynamicResource Dark_SecondaryLight}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            From="{DynamicResource Dark_SecondaryDark}"
+                                            To="{DynamicResource Dark_SecondaryLight}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            BeginTime="00:00:01.00"
+                                            From="{DynamicResource Dark_SecondaryLight}"
+                                            To="{DynamicResource Dark_TextLight}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GithubForegroundBrush"
+                                            Storyboard.TargetProperty="(GradientBrush.GradientStops)[2].(GradientStop.Color)"
+                                            Duration="00:00:01.00"
+                                            RepeatBehavior="1x"
+                                            BeginTime="00:00:02.00"
+                                            From="{DynamicResource Dark_TextLight}"
+                                            To="{DynamicResource Dark_SecondaryDark}"
+                                            AutoReverse="False">
+                                        </ColorAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Label.Triggers>
+                        <TextBlock TextDecorations="Underline">
+                            https://github.com/STOL4S
+                        </TextBlock>
+                    </Label>
+                    <Label Name="VersionLabel" Foreground="{DynamicResource Dark_TextBrush}" FontSize="12.0"
+                           Margin="12,-8,0,0">Debug v0.1.1a</Label>
+                    <Label Height="6"></Label>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Name="SystemInfoLabel" Foreground="{DynamicResource Dark_TextBrush}" FontSize="12.0" 
+                       HorizontalAlignment="Right" Margin="0,0,6,0" Text="Microsoft Windows 11 Home 64-bit (Admin)" VerticalAlignment="Center"/>
+        </Grid>
+
+        <TabControl Name="MainTabControl" TabStripPlacement="Left" Grid.Row="2"
+                    BorderBrush="{DynamicResource Dark_BorderBrush}" 
+                    Background="{DynamicResource Dark_ControlBrush}">
+            <TabItem Name="CustomCleanTab" BorderBrush="{DynamicResource Dark_BackgroundBrush}"
+                     Background="{DynamicResource VerticalGradientFill}" Style="{StaticResource MainTabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="CustomCleanTabImg" Height="32" Width="32" 
+                               Margin="0,16,0,2" Source="Resources/Images/ReportProjectWizard.png"/>
+                        <TextBlock Text="Clean" Margin="0,0,0,12" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="{DynamicResource Dark_ControlBrush}"
+                      Margin="0,0,1,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="279*"/>
+                        <ColumnDefinition Width="427*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TreeView Name="CustomCleanListView" Grid.Column="0"
+                              BorderBrush="{DynamicResource Dark_BorderBrush}"
+                              Background="{DynamicResource Dark_ControlBrush}">
+                        <TreeView.ContextMenu>
+                            <ContextMenu Name="CleanContextMenu" StaysOpen="True"
+                                         Uid="Clean Tree View">
+                                <MenuItem x:Name="CleanContext_CheckAllButton" Header="Check All" Click="CleanContext_CheckAllButton_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Resources/Images/CheckBoxGroup.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="CleanContext_UncheckAllButton" Header="Uncheck All" Click="CleanContext_UncheckAllButton_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Resources/Images/CheckBoxUncheckGroup.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator Background="{DynamicResource Dark_BorderBrush}"/>
+                                <MenuItem Header="Expand All">
+                                    <MenuItem.Icon>
+                                        <Image Source="Resources/Images/ExpandAll.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Collapse All">
+                                    <MenuItem.Icon>
+                                        <Image Source="Resources/Images/CollapseAll.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator Background="{DynamicResource Dark_BorderBrush}"/>
+                                <MenuItem Header="Applications...">
+                                    <MenuItem.Icon>
+                                        <Image Source="Resources/Images/ApplicationGroup.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Custom Folders...">
+                                    <MenuItem.Icon>
+                                        <Image Source="Resources/Images/FolderOpened.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </TreeView.ContextMenu>
+                        <TreeView.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+                                             Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}"
+                                             Color="{StaticResource Dark_Text}"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}"
+                                             Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}"
+                                             Color="{StaticResource Dark_Text}"/>
+                        </TreeView.Resources>
+                        <TreeViewItem Name="ApplicationsHeader" Focusable="False" Margin="0,4,0,2" IsExpanded="True">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Images/ApplicationGroup.png" Margin="0,1,0,0"/>
+                                    <TreeViewItem Header="Applications"  Focusable="False" Margin="-13,0,0,0" FontWeight="Bold"
+                                                  Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.Items>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox IsChecked="False"  Focusable="False" Margin="0,3,-12,0"/>
+                                    <TreeViewItem Name="Clean_NoAppNode" Header="No Applications Founds" Focusable="False"
+                                                  Margin="0,1,0,0" Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Items>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="CustomFolderHeader" Margin="0,4,0,2" IsExpanded="True">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Images/FolderOpened.png" Margin="0,1,0,0"/>
+                                    <TreeViewItem Header="Custom Folders" Margin="-13,0,0,0" FontWeight="Bold"
+                                                  Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.Items>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_NoCustomFolder" Header="None"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"
+                                                  Margin="0,0,0,0"/>
+                                </StackPanel>
+                            </TreeViewItem.Items>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="EdgeHeader" Margin="0,3,0,2" IsExpanded="True">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Images/MicrosoftEdge.png" Margin="-1,1,0,0"/>
+                                    <TreeViewItem Header="Edge Chromium" Margin="-13,0,0,0" FontWeight="Bold"
+                                                  Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.Items>
+                                <StackPanel Orientation="Horizontal" Margin="4,3,0,2">
+                                    <CheckBox Name="Clean_EAutoBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_EAutoNode" Header="Autocomplete History"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_ECookiesBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_ECookiesNode"  Header="Cookies"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_EHistoryBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_EHistoryNode"  Header="History"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_EImageBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_EImageNode" Header="Image Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_EDatabaseBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_EDatabaseNode" Header="Indexed Database Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_ESessionBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_ESessionNode" Header="Session"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_EPasswordBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_EPasswordNode" Header="Saved Passwords"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_ETempBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Name="Clean_ETempNode" Header="Temporary Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Items>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="InternetHeader" Margin="0,2,0,2" IsExpanded="True">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Images/WebAPI.png" Margin="0,1,0,0"/>
+                                    <TreeViewItem Header="Internet Explorer" Margin="-13,0,0,0" FontWeight="Bold"
+                                                  Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.Items>
+                                <StackPanel Orientation="Horizontal" Margin="4,3,0,2">
+                                    <CheckBox Name="Clean_IAutoBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Autocomplete History"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_ICookiesBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Cookies"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_IHistoryBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="History"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_IImageBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Image Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_IDatabaseBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Indexed Database Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_IPasswordBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Saved Passwords"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_ITempBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Temporary Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Items>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="SystemHeader" Margin="0,2,0,2" IsExpanded="True">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Images/SystemInfo.png" Margin="0,1,0,0"/>
+                                    <TreeViewItem Header="System" Margin="-13,0,0,0" FontWeight="Bold"
+                                                  Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.Items>
+                                <StackPanel Orientation="Horizontal" Margin="4,3,0,2">
+                                    <CheckBox Name="Clean_SysClipBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Clipboard"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysErrorBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Error Reports"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysEventBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Event Log Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysDumpBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Memory Dumps"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysRecycleBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Recycle Bin"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysLogBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="System Log Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysTempBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Temporary Files" Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysWebBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Web Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysWinLogBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Windows Log Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysReportBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Windows Report Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Items>
+                        </TreeViewItem>
+
+                        <TreeViewItem Name="WindowsHeader" Margin="0,2,0,2" IsExpanded="True">
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/Images/FolderClosed.png" Margin="0,1,0,0"/>
+                                    <TreeViewItem Header="Windows Explorer" Margin="-13,0,0,0" FontWeight="Bold"
+                                                  Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                            <TreeViewItem.Items>
+                                <StackPanel Orientation="Horizontal" Margin="4,3,0,2">
+                                    <CheckBox Name="Clean_WinDownloadBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Downloaded Files"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_WinHistoryBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="History Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_WinIconBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Icon Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_SysNotifBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Notifications"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_WinRecentBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Recents Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_WinSearchBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Search Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_WinThumbnailBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="Thumbnail Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="4,2,0,2">
+                                    <CheckBox Name="Clean_WinUserThumbBox" IsChecked="False" Margin="0,2,-12,0"/>
+                                    <TreeViewItem Header="User Thumbnail Cache"
+                                                   Foreground="{DynamicResource Dark_TextBrush}"/>
+                                </StackPanel>
+                            </TreeViewItem.Items>
+                        </TreeViewItem>
+
+                    </TreeView>
+                    <Border Name="CustomCleanResultPanel" Grid.Column="1"
+                            Background="{DynamicResource Dark_ControlBrush}" 
+                            BorderBrush="{DynamicResource Dark_BorderBrush}"
+                            BorderThickness="0,1,1,1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="38" MinHeight="38" MaxHeight="38"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="42"/>
+                            </Grid.RowDefinitions>
+                            <ProgressBar x:Name="CleanProgressBar" Grid.Row="0" 
+                                         Height="26" Margin="6" BorderBrush="#808080"
+                                         VerticalAlignment="Top" Value="50"/>
+                            <Border Grid.Row="1" Margin="6,0,6,0"
+                                         BorderBrush="{DynamicResource Dark_BorderBrush}" BorderThickness="1">
+                                <Grid>
+                                    <Image Name="CleanSpinnerImg" Source="Resources/Images/Loading_Spinner.png" Margin="10,16,10,10"
+                                       RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="31" Height="32">
+                                        <Image.RenderTransform>
+                                            <RotateTransform Angle="0"/>
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <Image Name="CleanCompleteImg" Source="Resources/Images/Check_Good.png" Margin="9,16,10,10"
+                                        RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="31" Height="32">
+                                        <Image.RenderTransform>
+                                            <RotateTransform Angle="0"/>
+                                        </Image.RenderTransform>
+                                    </Image>
+                                    <Label Name="CleanStatusLabel" Margin="48,1,0,0" Foreground="{DynamicResource Dark_TextLightBrush}" FontWeight="Bold">Calculating...</Label>
+                                    <Label Name="CleanDescriptionLabel" Margin="48,17,0,0" Foreground="{DynamicResource Dark_TextBrush}">Getting directory info...</Label>
+                                    <Label Name="CleanNoteLabel" Margin="48,33,0,0" Foreground="{DynamicResource Dark_TextBrush}">No files have been removed</Label>
+                                    <Separator Name="CleanSep1" VerticalAlignment="Top" Margin="10,64,10,0" 
+                                               Background="{DynamicResource Dark_SecondaryDarkBrush}"/>
+                                    <Label Name="CleanDetailsLabel" Margin="5,66,0,0" FontWeight="Bold" Foreground="{DynamicResource Dark_TextLightBrush}">Scan Details - 1412 Files Removed</Label>
+                                    <Separator Name="CleanSep2" VerticalAlignment="Top" Margin="10,95,10,0" 
+                                               Background="{DynamicResource Dark_SecondaryDarkBrush}"/>
+                                    <Grid Name="CleanNoScanPanel" Margin="0,95,0,0">
+                                        <Image Name="CleanPreviewImg" VerticalAlignment="Center"
+                                               HorizontalAlignment="Center" Source="/Resources/Images/Intellicode.png"
+                                               Width="36" Height="36" Margin="0,-164,0,0"/>
+                                        <Label FontWeight="Bold" FontSize="12.0"
+                                               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                               VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                               Margin="0,-104,0,0" Foreground="{DynamicResource Dark_TextLightBrush}">No Active Scan</Label>
+                                        <Label FontSize="12.0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                               VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                               Margin="0,-72,0,0" Foreground="{DynamicResource Dark_TextBrush}"
+                                                   Content="Start a scan to view the"/>
+                                        <Label FontSize="12.0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                               VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                               Margin="0,-42,0,0" Foreground="{DynamicResource Dark_TextBrush}"
+                                                   Content="files that will be removed"/>
+                                    </Grid>
+                                    <Grid Name="CleanResultPanel" Margin="0,95,0,0">
+                                        
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            <Button x:Name="CleanScanButton" Grid.Row="2" Width="96" Height="28" Margin="6"
+                                    VerticalAlignment="Top" HorizontalAlignment="Left"
+                                    Content="Scan" Click="CleanScanButton_Click">
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                        <BeginStoryboard Storyboard="{StaticResource Storyboard}"/>
+                                    </EventTrigger>
+                                </Button.Triggers>
+                            </Button>
+                            <Button x:Name="CleanCleanButton" Grid.Row="2" Width="96" Height="28" Margin="6"
+                                    VerticalAlignment="Top" HorizontalAlignment="Right"
+                                    Content="Clean" Click="CleanCleanButton_Click"/>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </TabItem>
+            <TabItem Name="PerformanceTab" BorderBrush="{DynamicResource SecondaryColorBrush}"
+                     Background="{DynamicResource VerticalGradientFill}" Style="{StaticResource MainTabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="PerformanceTabImg" Height="32" Width="32" 
+                               Margin="0,16,0,2" Source="Resources/Images/PerformanceReport.png"/>
+                        <TextBlock Text="Performance" Margin="0,0,0,12" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Name="StorageTab" BorderBrush="{DynamicResource SecondaryColorBrush}"
+                     Background="{DynamicResource VerticalGradientFill}" Style="{StaticResource MainTabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="StorageTabImg" Height="32" Width="32" 
+                               Margin="0,18,0,0" Source="Resources/Images/StorageDriver.png"/>
+                        <TextBlock Text="Storage" Margin="0,0,0,12" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" TextAlignment="Center">
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Name="ToolsTab" BorderBrush="{DynamicResource SecondaryColorBrush}"
+                     Background="{DynamicResource VerticalGradientFill}" Style="{StaticResource MainTabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="ToolsTabImg" Height="32" Width="32" 
+                               Margin="0,16,0,2" Source="Resources/Images/PropertyShortcut.png"/>
+                        <TextBlock Text="Tools" Margin="0,0,0,12" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Name="SystemTab" BorderBrush="{DynamicResource SecondaryColorBrush}"
+                     Background="{DynamicResource VerticalGradientFill}" Style="{StaticResource MainTabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="SystemTabImg" Height="32" Width="32" 
+                               Margin="0,16,0,2" Source="Resources/Images/SystemInfo.png"/>
+                        <TextBlock Text="System" Margin="0,0,0,12" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                </Grid>
+            </TabItem>
+            <TabItem Name="OptionsTab" BorderBrush="{DynamicResource SecondaryColorBrush}"
+                     Background="{DynamicResource VerticalGradientFill}" Style="{StaticResource MainTabItemStyle}">
+                <TabItem.Header>
+                    <StackPanel Orientation="Vertical">
+                        <Image Name="OptionsTabImg" Height="32" Width="32" 
+                               Margin="0,16,0,2" Source="Resources/Images/SettingsGroup.png"/>
+                        <TextBlock Text="Options" Margin="0,0,0,12" VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center" TextAlignment="Center"/>
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="{DynamicResource Dark_ControlBrush}">
+                    <TabControl TabStripPlacement="Left" SelectedIndex="1"
+                                BorderBrush="{DynamicResource Dark_BorderBrush}" 
+                                Background="{DynamicResource Dark_ControlBrush}">
+                        <TabItem Margin="-2,1,0,0" Width="196"
+                                     Height="24" IsEnabled="False"
+                                     Style="{StaticResource DetailTabItemDisabledStyle}"
+                                     Background="{StaticResource Dark_ControlBrush}"
+                                     Foreground="{StaticResource Dark_TextBrush}">
+                            <TabItem.Header>
+                                <Grid>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                   Width="72" Margin="0,0,120,2"/>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                   Width="73" Margin="118,0,0,2"/>
+                                    <TextBlock Text="General" Margin="0,0,2,3" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Center" TextAlignment="Center"/>
+                                </Grid>
+                            </TabItem.Header>
+                            <Grid Background="{StaticResource Dark_ControlBrush}"/>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                     Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                                HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/Settings.png"
+                                               Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Preferences" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                                   HorizontalAlignment="Left" TextAlignment="Center"
+                                                   Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                 Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/UpdateScript.png"
+                                           Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Software Update" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,1,0,0" Width="196"
+                                 Height="24" IsEnabled="False"
+                                 Style="{StaticResource DetailTabItemDisabledStyle}"
+                                 Background="{StaticResource Dark_ControlBrush}"
+                                 Foreground="{StaticResource Dark_TextBrush}">
+                            <TabItem.Header>
+                                <Grid>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                Width="72" Margin="0,0,120,2"/>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                Width="73" Margin="118,0,0,2"/>
+                                    <TextBlock Text="Cleaner" Margin="0,0,2,3" VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" TextAlignment="Center"/>
+                                </Grid>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                 Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/ApplicationGroup.png"
+                                            Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Applications" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                    Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/FolderOpened.png"
+                                            Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Custom Folders" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" MinWidth="256"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Stretch">
+                                <GroupBox Grid.Column="0" Header="Add Custom Folders"
+                                          Height="228" VerticalAlignment="Top"
+                                          Margin="0,0,2,0">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="1*"/>
+                                            <RowDefinition Height="2*"/>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Orientation="Vertical"
+                                                    Grid.Row="0">
+                                            <Label Foreground="{DynamicResource Dark_TextLightBrush}"
+                                                   Content="Name"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBox x:Name="CustomFolderNameBox" MinWidth="164" 
+                                                         HorizontalAlignment="Stretch" Grid.Column="0"
+                                                         Margin="5,0,0,0" Text="Untitled" GotFocus="CustomFolderNameBox_GotFocus" TextChanged="CustomFolderNameBox_TextChanged"/>
+                                                <Label Height="4" Visibility="Hidden" Content="Placeholder" Grid.Column="1"/>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical"
+                                                    Grid.Row="1">
+                                            <Label Foreground="{DynamicResource Dark_TextLightBrush}"
+                                                   Content="Path"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBox Name="CustomFolderPathBox" 
+                                                         Grid.Column="0"
+                                                         MinWidth="164" Width="Auto"
+                                                         Height="18" HorizontalAlignment="Stretch"
+                                                         Margin="5,0,0,0" Text=""/>
+                                                <Button Name="CustomFolderBrowseButton" 
+                                                        Grid.Column="1"
+                                                        Style="{DynamicResource Style_ButtonSmall}" 
+                                                        Height="19" Width="16" Content="..."
+                                                        Margin="2,1,0,0" Click="CustomFolderBrowseButton_Click"
+                                                        HorizontalAlignment="Left"/>
+                                                <Button Name="CustomFolderAddButton"
+                                                        Style="{DynamicResource Style_ButtonSmall}" 
+                                                        Grid.Column="1" HorizontalAlignment="Right"
+                                                        Height="19" Width="50" Margin="21,1,0,0" Click="CustomFolderAddButton_Click">
+                                                    <Button.Content>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Image Source="Resources/Images/Add.png"
+                                                                   Margin="-8,1,0,0"
+                                                                   Width="10" Height="10"/>
+                                                            <TextBlock Text="Add"
+                                                                       Margin="4,0,0,1"/>
+                                                        </StackPanel>
+                                                    </Button.Content>
+                                                </Button>
+                                            </Grid>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical"
+                                                    Grid.Row="2">
+                                            <Label Foreground="{DynamicResource Dark_TextLightBrush}"
+                                                   Content="Description"/>
+                                            <TextBox x:Name="CustomFolderDescBox" HorizontalAlignment="Stretch"
+                                                     VerticalAlignment="Stretch"
+                                                     MinLines="4"
+                                                     Margin="5,0,5,0" Text="Enter a description..."
+                                                     FontStyle="Italic" GotFocus="CustomFolderDescBox_GotFocus"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </GroupBox>
+                                    <GroupBox Grid.Column="0" Header="Custom Folder Properties"
+                                          Margin="0,3,2,0" VerticalAlignment="Stretch"
+                                              MinHeight="262">
+                                        <Grid Name="FolderPropNoSelectPanel" Background="Transparent" Margin="0,0,0,4">
+                                            <Image Source="Resources/Images/FolderProperties.png"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" Width="32"
+                                                   Height="32" Margin="0,0,0,52"/>
+                                            <Label Foreground="{DynamicResource Dark_TextLightBrush}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Content="No Selected Folder" Margin="0,10,0,10"/>
+                                            <Label Foreground="{DynamicResource Dark_TextBrush}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Margin="0,59,0,10">
+                                                <Label.Content>
+                                                    <TextBlock TextAlignment="Center">
+                                                        Select a folder from the list to
+                                                        <LineBreak/>
+                                                        view it's properties here
+                                                    </TextBlock>
+                                                </Label.Content>
+                                            </Label>
+                                        </Grid>
+                                    </GroupBox>
+                                </StackPanel>
+                                <GroupBox Grid.Column="1" Header="Custom Folder List">
+                                    <Grid>
+                                        <ListView Name="CustomFolderListBox"
+                                                 HorizontalContentAlignment="Stretch"
+                                                 HorizontalAlignment="Stretch"
+                                                 BorderBrush="{DynamicResource Dark_BorderBrush}"
+                                                 Background="{DynamicResource Dark_ControlDarkBrush}"
+                                                 Foreground="{DynamicResource Dark_TextBrush}">
+                                            <ListView.DataContext>
+                                                <local:CustomFolderDataContext/>
+                                            </ListView.DataContext>
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridView.ColumnHeaderContainerStyle>
+                                                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                            <Setter Property="Background" Value="{DynamicResource ButtonPressedGradientFill}"/>
+                                                            <Setter Property="BorderBrush" Value="{DynamicResource Dark_BorderBrush}"/>
+                                                        </Style>
+                                                    </GridView.ColumnHeaderContainerStyle>
+                                                    <GridView.ColumnHeaderTemplate>
+                                                        <DataTemplate>
+                                                            <DockPanel Background="{DynamicResource ButtonPressedGradientFill}"
+                                                                       HorizontalAlignment="Stretch">
+                                                                <TextBlock Foreground="{DynamicResource Dark_TextLightBrush}">
+                                                                    <TextBlock.Text>
+                                                                        <Binding Path="Text"/>
+                                                                    </TextBlock.Text>
+                                                                </TextBlock>
+                                                            </DockPanel>
+                                                        </DataTemplate>
+                                                    </GridView.ColumnHeaderTemplate>
+                                                    <GridView.Columns>
+                                                        <GridViewColumn Width="Auto">
+                                                            <GridViewColumn.HeaderContainerStyle>
+                                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                                                                <Border CornerRadius="3,0,0,3" Margin="-1,0,0,0"
+                                                                                        Background="{DynamicResource ButtonPressedGradientFill}"
+                                                                                        BorderBrush="{DynamicResource Dark_BorderBrush}"
+                                                                                        BorderThickness="1">
+                                                                                    <TextBlock Text="Name" Padding="5"
+                                                                                               Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </GridViewColumn.HeaderContainerStyle>
+                                                            <GridViewColumn.Header>
+                                                                <TextBlock Text="Name"/>
+                                                            </GridViewColumn.Header>
+                                                            <GridViewColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Text="{Binding CFTitle}"/>
+                                                                </DataTemplate>
+                                                            </GridViewColumn.CellTemplate>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn Width="Auto">
+                                                            <GridViewColumn.HeaderContainerStyle>
+                                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                                                                <Border CornerRadius="0"
+                                                                                        Background="{DynamicResource ButtonPressedGradientFill}"
+                                                                                        BorderBrush="{DynamicResource Dark_BorderBrush}"
+                                                                                        BorderThickness="0,1,1,1">
+                                                                                    <TextBlock Text="Path" Padding="5"
+                                                                                               Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </GridViewColumn.HeaderContainerStyle>
+                                                            <GridViewColumn.Header>
+                                                                <TextBlock Text="Path"/>
+                                                            </GridViewColumn.Header>
+                                                            <GridViewColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Text="{Binding CFPath}"/>
+                                                                </DataTemplate>
+                                                            </GridViewColumn.CellTemplate>
+                                                        </GridViewColumn>
+                                                        <GridViewColumn Width="200">
+                                                            <GridViewColumn.HeaderContainerStyle>
+                                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                                    <Setter Property="Template">
+                                                                        <Setter.Value>
+                                                                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                                                                <Border CornerRadius="0,3,3,0" Margin="0,0,-4,0"
+                                                                                        Background="{DynamicResource ButtonPressedGradientFill}"
+                                                                                        BorderBrush="{DynamicResource Dark_BorderBrush}"
+                                                                                        BorderThickness="0,1,1,1">
+                                                                                    <TextBlock Text="Description" Padding="5"
+                                                                                               Foreground="{DynamicResource Dark_TextLightBrush}"/>
+                                                                                </Border>
+                                                                            </ControlTemplate>
+                                                                        </Setter.Value>
+                                                                    </Setter>
+                                                                </Style>
+                                                            </GridViewColumn.HeaderContainerStyle>
+                                                            <GridViewColumn.Header>
+                                                                <TextBlock Text="Description"/>
+                                                            </GridViewColumn.Header>
+                                                            <GridViewColumn.CellTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Text="{Binding CFDescription}"/>
+                                                                </DataTemplate>
+                                                            </GridViewColumn.CellTemplate>
+                                                        </GridViewColumn>
+                                                    </GridView.Columns>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                        <Grid Name="CustomFolderNoFolderPanel" Background="Transparent" Margin="0,0,0,4">
+                                            <Image Source="Resources/Images/FolderOpened.png"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center" Width="32"
+                                                   Height="32" Margin="0,0,0,52"/>
+                                            <Label Foreground="{DynamicResource Dark_TextLightBrush}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Content="No Custom Folders" Margin="0,0,0,10"/>
+                                            <Label Foreground="{DynamicResource Dark_TextBrush}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                   Margin="0,49,0,10">
+                                                <Label.Content>
+                                                    <TextBlock TextAlignment="Center">
+                                                        Folders can be modified or removed from
+                                                        <LineBreak/>
+                                                        After they have been added
+                                                    </TextBlock>
+                                                </Label.Content>
+                                            </Label>
+                                        </Grid>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                    Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/SettingsFile.png"
+                                            Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Default Settings" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/RemoveFromCollection.png"
+                                            Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Excluded Items" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>      
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,1,0,0" Width="196"
+                                 Height="24" IsEnabled="False"
+                                 Style="{StaticResource DetailTabItemDisabledStyle}"
+                                 Background="{StaticResource Dark_ControlBrush}"
+                                 Foreground="{StaticResource Dark_TextBrush}">
+                            <TabItem.Header>
+                                <Grid>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                Width="34" Margin="0,0,156,2"/>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                Width="35" Margin="154,0,0,2"/>
+                                    <TextBlock Text="Performance Monitor" Margin="0,0,2,3" VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" TextAlignment="Center"/>
+                                </Grid>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/HardDrive.png"
+                                            Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Hardware" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,1,0,0" Width="196"
+                                 Height="24" IsEnabled="False"
+                                 Style="{StaticResource DetailTabItemDisabledStyle}"
+                                 Background="{StaticResource Dark_ControlBrush}"
+                                 Foreground="{StaticResource Dark_TextBrush}">
+                            <TabItem.Header>
+                                <Grid>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                Width="64" Margin="0,0,146,2"/>
+                                    <Separator Background="{StaticResource Dark_ControlSurfaceBrush}"
+                                                Width="64" Margin="144,0,0,2"/>
+                                    <TextBlock Text="Storage Manager" Margin="0,0,2,3" VerticalAlignment="Center" 
+                                                HorizontalAlignment="Center" TextAlignment="Center"/>
+                                </Grid>
+                            </TabItem.Header>
+                        </TabItem>
+                        <TabItem Margin="-2,0,0,0" Width="196"
+                                Height="24" Style="{StaticResource DetailTabItemStyle}">
+                            <TabItem.Header>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Stretch">
+                                    <Image Source="Resources/Images/SearchProperty.png"
+                                            Margin="-104,2,0,2" Width="18" Height="18"/>
+                                    <TextBlock Text="Scan Settings" Margin="-38,-1,0,0" VerticalAlignment="Center" 
+                                               HorizontalAlignment="Left" TextAlignment="Center"
+                                               Foreground="{StaticResource Dark_TextLightBrush}"/>
+                                </StackPanel>
+                            </TabItem.Header>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Content="Button" Height="0" Margin="250,-5,550,89" Width="0"/>
+    </Grid>
+</Window>
